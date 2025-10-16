@@ -3,10 +3,201 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Portfolio</title>
+  <title>Your Name - Professional Portfolio</title>
+  <style>
+    /* Basic Reset and Typography */
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f7f9fa;
+      color: #21243d;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: #21243d;
+      color: #fff;
+      padding: 40px 0 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    }
+    header h1 { margin: 0; font-size: 2.6rem; }
+    header p { margin: 10px 0 0 0; font-size: 1.1rem; }
+    nav {
+      margin: 18px 0 0 0;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 16px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #ff6a3d;
+    }
+    section {
+      max-width: 900px;
+      margin: 32px auto;
+      padding: 24px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    h2 {
+      margin-top: 0;
+      color: #21243d;
+      font-size: 2rem;
+    }
+    .skills ul, .projects ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .skills li, .projects li {
+      background: #ececec;
+      border-radius: 8px;
+      padding: 6px 18px;
+      font-size: 1rem;
+    }
+    .testimonial {
+      font-style: italic;
+      margin: 14px 0;
+      color: #444;
+    }
+    footer {
+      text-align: center;
+      padding: 18px;
+      background: #21243d;
+      color: #fff;
+      font-size: 0.98rem;
+      margin-top: 30px;
+      border-radius: 0 0 12px 12px;
+    }
+    /* Responsive Styles */
+    @media(max-width:650px){
+      section { padding: 12px; }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.4rem; }
+      .skills ul, .projects ul { flex-direction: column; }
+    }
+    /* Simple form styling */
+    form input, form textarea {
+      width: 100%;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      border: 1px solid #ddd;
+      padding: 7px;
+      border-radius: 6px;
+      resize: vertical;
+    }
+    form button {
+      background: #ff6a3d;
+      color: #fff;
+      border: none;
+      padding: 8px 20px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background: #21243d;
+    }
+  </style>
 </head>
 <body>
-  <h1>This is my portfolio</h1>
+<header>
+  <h1>Your Name</h1>
+  <p>Web Developer | Designer | Freelancer</p>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>
+    Welcome to my professional portfolio! I am a passionate developer with experience in frontend & backend web technologies, focused on building secure, modern, and responsive websites.
+  </p>
+</section>
+
+<section id="skills" class="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li>HTML5</li>
+    <li>CSS3</li>
+    <li>JavaScript (ES6+)</li>
+    <li>React</li>
+    <li>Node.js</li>
+    <li>Responsive Design</li>
+    <li>Web Security</li>
+    <li>UI/UX Prototyping</li>
+  </ul>
+</section>
+
+<section id="projects" class="projects">
+  <h2>Projects</h2>
+  <ul>
+    <li>
+      Portfolio Website&nbsp;—&nbsp;Built for professionals to showcase their work.
+    </li>
+    <li>
+      Ecommerce Store&nbsp;—&nbsp;Secure, responsive storefront using React and Node.js.
+    </li>
+    <li>
+      Interactive Form&nbsp;—&nbsp;Accessible, secure forms with validation.
+    </li>
+    <li>
+      Blog Platform&nbsp;—&nbsp;SEO-friendly, user-authenticated blogging site.
+    </li>
+  </ul>
+</section>
+
+<section id="testimonials">
+  <h2>Testimonials</h2>
+  <div class="testimonial">"Always delivers innovative, robust solutions on time." – Project Manager</div>
+  <div class="testimonial">"Highly recommend for attention to detail and modern design skills." – Lead Designer</div>
+</section>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form id="contactForm" autocomplete="off">
+    <input type="text" id="name" name="name" placeholder="Your Name" required>
+    <input type="email" id="email" name="email" placeholder="Your Email" required>
+    <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit">Send</button>
+    <div id="status"></div>
+  </form>
+</section>
+
+<footer>
+  &copy; 2025 Your Name. All rights reserved.
+</footer>
+<script>
+  // Simple JS for client-side validation & feedback (no data is sent)
+  document.getElementById('contactForm').onsubmit = function(e) {
+    e.preventDefault();
+    var name = document.getElementById('name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var message = document.getElementById('message').value.trim();
+    var status = document.getElementById('status');
+
+    if(name.length < 2 || !email.match(/^.+@.+..{2,}$/) || message.length < 5){
+      status.textContent = 'Please enter valid contact info.';
+      status.style.color = '#ff6a3d';
+      return false;
+    }
+    status.textContent = 'Message sent! (Demo only)';
+    status.style.color = '#21243d';
+    // In production, data should be securely validated & sent via backend
+    return false;
+  };
+</script>
 </body>
 </html>
